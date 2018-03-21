@@ -11,9 +11,9 @@ struct node{
 
 void createList(struct node** head);
 
-void insertNode(struct node* head, char* name, char* unit);
+void insertNode(struct node* head, char* name, char* unit, int quantity);
 
-void deleteNode(char* name);
+void deleteNode(struct node* head, char* name);
 
 void deleteAll(struct node* head);
 
