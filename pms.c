@@ -9,9 +9,20 @@ void createList(struct node** head){
 
 //void insertNode(struct node* head);
 
-//void deleteNode(char* name);
+void deleteNode(struct node* head, char* name){
+	while( != NULL){
+		if(head->name == " name"){
+			free(head->name
+}
 
-//void deleteAll(struct node* head);
+void deleteAll(struct node* head){
+if(head!=NULL){
+                deleteAll(head->next);
+		free(head->unit);
+		free(head->name);
+                free(head);
+}
+}
 
 //void search(struct node* head);
 
