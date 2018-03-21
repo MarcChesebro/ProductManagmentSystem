@@ -3,13 +3,15 @@
 
 struct node{
 
+	char* name;
+	char* unit;
 	int quantity;
 	struct node* next;
 };
 
 void createList(struct node** head);
 
-void insertNode(struct node* head);
+void insertNode(struct node* head, char* name, char* unit);
 
 void deleteNode(char* name);
 
