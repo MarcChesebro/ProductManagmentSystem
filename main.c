@@ -6,7 +6,7 @@ int main(int argc, char** argv){
 	struct node* head;
 	int input;
 
-	while(true){
+	while(True){
 		printf("\n");
 		printf("\n");
 		printf("\n");
@@ -43,6 +43,7 @@ int main(int argc, char** argv){
 			deleteNode(head, name);
 		}else if(input == 4){
 			deleteAll(head);
+		}
 	}
 
 	free(head);
