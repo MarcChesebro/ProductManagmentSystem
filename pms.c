@@ -15,14 +15,20 @@ void createList(struct node** head){
 void insertNode(struct node* head, char* name, char* unit, int quantity, int price){
 
 	while(head->next != NULL){
-		if(strcmp(head->name, name)){
+		if(head->name != NULL && strcmp(head->name, name)){
 			printf("Already in List");
 			return;
 		}
 		head = head->next;
-	}	
+	}
+
+	if(head->name != NULL && strcmp(head->name, name)){
+		printf("Already in List");
+		return;
+	}
+	
 	head->next = (struct node*)malloc(sizeof(struct node));
-	head->next->name = strdup(name);	
+	head->next->name = strdup(name);
 	head->next->unit = strdup(unit);
 	head->next->quantity = quantity;
 	head->next->price = price;
@@ -47,6 +53,7 @@ void deleteAll(struct node* head){
                 deleteAll(head->next);
 		free(head->unit);
 		free(head->name);
+		head->next = NULL;
                 free(head);
 	}
 }
@@ -66,7 +73,7 @@ void search(struct node* head, char* name){
 void printAll(struct node* head){
 
 	if(head != NULL){
-		printf("Name:\t%s\nUnit:\t%s\nQuantity:\t%d\n", head->name, head->unit, head->quantity);
+		printf("Name:\t%s\nUnit:\t%s\nQuantity:\t%d\nPrice:\t%d\n\n", head->name, head->unit, head->quantity, head->price);
 		head = head->next;
 		printAll(head);
 	}
