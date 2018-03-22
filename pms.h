@@ -21,9 +21,9 @@ void search(struct node* head, char* name);
 
 void printAll(struct node* head);
 
-void purchase(struct node* head);
+void purchase(struct node* head, char* name);
 
-void sell(struct node* head);
+void sell(struct node* head, char* name);
 
 void save(struct node* head);
 

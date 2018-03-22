@@ -47,11 +47,12 @@ void deleteAll(struct node* head){
 
 void search(struct node* head, char* name){
 
-	while(head->next != NULL){
+	while(head != NULL){
 		if(strcmp(head->name, name)){
 			printf("Found");
 			return;
 		}
+		head = head->next;
 	}	
 	printf("Not Found");
 }
@@ -65,8 +66,38 @@ void printAll(struct node* head){
 	}
 }
 
-//void purchase(struct node* head);
+void purchase(struct node* head, char* name){
+	while(head != NULL){
+		if(strcmp(head->name, name)){
+			head->quantity++;
+			return;
+		}
+		head = head->next;
+	}	
+	printf("Not Found");
 
-//void sell(struct node* head);
+}
 
-//void save(struct node* head);
+void sell(struct node* head, char* name){
+	while(head != NULL){
+		if(strcmp(head->name, name)){
+			head->quantity--;
+			return;
+		}
+		head = head->next;
+	}	
+	printf("Not Found");
+}
+
+void save(struct node* head){
+
+	FILE* file;
+
+	file = fopen("save.txt", "w+");
+
+	while(head != NULL){
+		fprintf(file, "%s, %s, %d", head->name, head->unit, head->quantity);
+	}
+
+	fclose(file);
+}
