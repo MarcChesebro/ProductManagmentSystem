@@ -5,7 +5,8 @@
 
 void createList(struct node** head){
 	*head = (struct node*)malloc(sizeof(struct node));
-	(*head)->name = NULL;
+	(*head)->name = (char*)malloc(sizeof(char));
+	(*head)->name = "";
 	(*head)->unit = NULL;
 	(*head)->quantity = 1;
 	(*head)->price = 0;
@@ -15,14 +16,14 @@ void createList(struct node** head){
 void insertNode(struct node* head, char* name, char* unit, int quantity, int price){
 
 	while(head->next != NULL){
-		if(head->name != NULL && strcmp(head->name, name)){
+		if(strcmp(head->name, name) == 0){
 			printf("Already in List");
 			return;
 		}
 		head = head->next;
 	}
 
-	if(head->name != NULL && strcmp(head->name, name)){
+	if(strcmp(head->name, name)){
 		printf("Already in List");
 		return;
 	}
@@ -37,7 +38,7 @@ void insertNode(struct node* head, char* name, char* unit, int quantity, int pri
 
 void deleteNode(struct node* head, char* name){
 	while(head->next != NULL){
-		if(strcmp(head->next->name, name)){
+		if(strcmp(head->next->name, name) == 0){
 
 			free(head->next->unit);
 			free(head->next->name);
@@ -116,6 +117,7 @@ void save(struct node* head){
 
 	while(head != NULL){
 		fprintf(file, "%s, %s, %d, %d", head->name, head->unit, head->price, head->quantity);
+		head = head->next;
 	}
 
 	fclose(file);
