@@ -115,8 +115,10 @@ void save(struct node* head){
 
 	file = fopen("save.txt", "w+");
 
+	head = head->next;
+
 	while(head != NULL){
-		fprintf(file, "%s, %s, %d, %d", head->name, head->unit, head->price, head->quantity);
+		fprintf(file, "%s, %s, %d, %d\n", head->name, head->unit, head->price, head->quantity);
 		head = head->next;
 	}
 
