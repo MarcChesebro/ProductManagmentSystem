@@ -33,6 +33,7 @@ int main(int argc, char** argv){
 			char name[50];
 			char unit[50];
 			int quantity;
+			int price;
 
 			printf("Name:");
 			scanf("%s", name);
@@ -40,10 +41,13 @@ int main(int argc, char** argv){
 			printf("Quantity:");
 			scanf(" %d", &quantity);
 
+			printf("Price:");
+			scanf(" %d", &price);
+
 			printf("Unit:");
 			scanf("%s", unit);
 		
-			insertNode(head, name, unit, quantity);
+			insertNode(head, name, unit, quantity, price);
 		}else if(input == 3){
 			char* name;
 			printf("\nName:");
@@ -52,7 +56,7 @@ int main(int argc, char** argv){
 		}else if(input == 4){
 			deleteAll(head);
 		}else if(input == 6){
-			printAll(head);
+			printAll(head->next);
 		}
 	}
 

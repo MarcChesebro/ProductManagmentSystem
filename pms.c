@@ -8,10 +8,11 @@ void createList(struct node** head){
 	(*head)->name = NULL;
 	(*head)->unit = NULL;
 	(*head)->quantity = 1;
+	(*head)->price = 0;
 	(*head)->next = NULL;
 }
 
-void insertNode(struct node* head, char* name, char* unit, int quantity){
+void insertNode(struct node* head, char* name, char* unit, int quantity, int price){
 
 	while(head->next != NULL){
 		if(strcmp(head->name, name)){
@@ -24,6 +25,7 @@ void insertNode(struct node* head, char* name, char* unit, int quantity){
 	head->next->name = strdup(name);	
 	head->next->unit = strdup(unit);
 	head->next->quantity = quantity;
+	head->next->price = price;
 	head->next->next = NULL;
 }
 
@@ -106,7 +108,7 @@ void save(struct node* head){
 	file = fopen("save.txt", "w+");
 
 	while(head != NULL){
-		fprintf(file, "%s, %s, %d", head->name, head->unit, head->quantity);
+		fprintf(file, "%s, %s, %d, %d", head->name, head->unit, head->price, head->quantity);
 	}
 
 	fclose(file);

@@ -6,12 +6,13 @@ struct node{
 	char* name;
 	char* unit;
 	int quantity;
+	int price;
 	struct node* next;
 };
 
 void createList(struct node** head);
 
-void insertNode(struct node* head, char* name, char* unit, int quantity);
+void insertNode(struct node* head, char* name, char* unit, int quantity, int price);
 
 void deleteNode(struct node* head, char* name);
 
