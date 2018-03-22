@@ -55,9 +55,28 @@ int main(int argc, char** argv){
 			deleteNode(head, name);
 		}else if(input == 4){
 			deleteAll(head);
+		}else if(input == 5){
+			char name[50];
+			printf("Name for search:");
+			scanf("%s", name);
+			search(head, name);
 		}else if(input == 6){
-			printAll(head->next);
-		}
+			printAll(head->next);		
+		}else if(input == 7){
+			char name[50];
+			printf("name");
+			scanf("%s", name);
+			purchase(head, name);
+		}else if(input == 8){
+			char name[50];
+			printf("name");
+			scanf("%s", name);
+			sell(head, name);
+		}else if(input == 9){
+			save(head);
+		}else if(input == 0){
+			exit(0);
+		}		
 	}
 
 	free(head);
