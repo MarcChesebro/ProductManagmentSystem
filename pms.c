@@ -5,15 +5,21 @@
 
 void createList(struct node** head){
 	*head = (struct node*)malloc(sizeof(struct node));
-	(*head)->name = (char*)malloc(sizeof(char));
-	(*head)->name = "";
-	(*head)->unit = NULL;
+	(*head)->name = (char*)malloc(20);
+	strcpy((*head)->name, "");
+	(*head)->unit = (char*)malloc(sizeof(char));
+	strcpy((*head)->name, "");
 	(*head)->quantity = 1;
 	(*head)->price = 0;
 	(*head)->next = NULL;
 }
 
 void insertNode(struct node* head, char* name, char* unit, int quantity, int price){
+	
+	if(quantity < 1 || price < 1){
+		printf("quantity and price must be at least 1");
+		return;
+	}
 
 	while(head->next != NULL){
 		if(strcmp(head->name, name) == 0){
@@ -37,20 +43,25 @@ void insertNode(struct node* head, char* name, char* unit, int quantity, int pri
 }
 
 void deleteNode(struct node* head, char* name){
+
 	while(head->next != NULL){
 		if(strcmp(head->next->name, name) == 0){
 
+			struct node* temp;
 			free(head->next->unit);
 			free(head->next->name);
-			head->next = head->next->next;
+			temp = head->next;
+			head->next = temp->next;
+			free(temp);
 			return;
 		}
+		head = head->next;
 	}
 	printf("product does not exist");
 }
 
 void deleteAll(struct node* head){
-	if(head!=NULL){
+	if(head != NULL){
                 deleteAll(head->next);
 		free(head->unit);
 		free(head->name);

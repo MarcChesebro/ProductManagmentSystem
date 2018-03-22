@@ -5,6 +5,8 @@
 int main(int argc, char** argv){
 	struct node* head;
 	int input;
+	
+	head = NULL;
 
 	while(0 == 0){
 		printf("\n");
@@ -29,6 +31,8 @@ int main(int argc, char** argv){
 		scanf("%d", &input);
 		if(input == 1){
 			 createList(&head);
+		}else if(head == NULL && input != 0){
+			printf("Must create a list first\n");
 		}else if(input == 2){
 			char name[50];
 			char unit[50];
@@ -49,12 +53,13 @@ int main(int argc, char** argv){
 		
 			insertNode(head, name, unit, quantity, price);
 		}else if(input == 3){
-			char* name;
+			char name[50];
 			printf("\nName:");
 			scanf("%s", name);
 			deleteNode(head, name);
 		}else if(input == 4){
 			deleteAll(head);
+			head = NULL;
 		}else if(input == 5){
 			char name[50];
 			printf("Name for search:");
@@ -64,17 +69,18 @@ int main(int argc, char** argv){
 			printAll(head->next);		
 		}else if(input == 7){
 			char name[50];
-			printf("name");
+			printf("Name:");
 			scanf("%s", name);
 			purchase(head, name);
 		}else if(input == 8){
 			char name[50];
-			printf("name");
+			printf("Name:");
 			scanf("%s", name);
 			sell(head, name);
 		}else if(input == 9){
 			save(head);
 		}else if(input == 0){
+			deleteAll(head);
 			exit(0);
 		}		
 	}
