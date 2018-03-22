@@ -45,7 +45,16 @@ void deleteAll(struct node* head){
 	}
 }
 
-//void search(struct node* head);
+void search(struct node* head, char* name){
+
+	while(head->next != NULL){
+		if(strcmp(head->name, name)){
+			printf("Found");
+			return;
+		}
+	}	
+	printf("Not Found");
+}
 
 void printAll(struct node* head){
 

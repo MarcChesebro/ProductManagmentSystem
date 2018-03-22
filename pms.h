@@ -17,7 +17,7 @@ void deleteNode(struct node* head, char* name);
 
 void deleteAll(struct node* head);
 
-void search(struct node* head);
+void search(struct node* head, char* name);
 
 void printAll(struct node* head);
 
