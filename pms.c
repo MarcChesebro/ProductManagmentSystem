@@ -14,6 +14,10 @@ void createList(struct node** head){
 void insertNode(struct node* head, char* name, char* unit, int quantity){
 
 	while(head->next != NULL){
+		if(strcmp(head->name, name)){
+			printf("Already in List");
+			return;
+		}
 		head = head->next;
 	}	
 	head->next = (struct node*)malloc(sizeof(struct node));
@@ -74,19 +78,25 @@ void purchase(struct node* head, char* name){
 		}
 		head = head->next;
 	}	
-	printf("Not Found");
+	printf("Product Not Found");
 
 }
 
 void sell(struct node* head, char* name){
+
+	struct node* original = head;
+
 	while(head != NULL){
 		if(strcmp(head->name, name)){
 			head->quantity--;
+			if(head->quantity < 1){
+				deleteNode(original, name);
+			}
 			return;
 		}
 		head = head->next;
-	}	
-	printf("Not Found");
+	}
+	printf("Product Not Found");
 }
 
 void save(struct node* head){
