@@ -6,7 +6,7 @@ int main(int argc, char** argv){
 	struct node* head;
 	int input;
 
-	while(True){
+	while(0 == 0){
 		printf("\n");
 		printf("\n");
 		printf("\n");
@@ -26,23 +26,33 @@ int main(int argc, char** argv){
 		printf("\n");
 		printf("\n");
 		printf("\n");
-		scanf("input option: %d", &input);
+		scanf("%d", &input);
 		if(input == 1){
 			 createList(&head);
 		}else if(input == 2){
-			char* name;
-			char* unit;
+			char name[50];
+			char unit[50];
 			int quantity;
-			scanf("Name: %s", name);
-			scanf("Unit: %s", unit);
-			scanf("Quantity: %d", &quantity);
+
+			printf("Name:");
+			scanf("%s", name);
+	
+			printf("Quantity:");
+			scanf(" %d", &quantity);
+
+			printf("Unit:");
+			scanf("%s", unit);
+		
 			insertNode(head, name, unit, quantity);
 		}else if(input == 3){
 			char* name;
-			scanf("Name: %s", name);
+			printf("\nName:");
+			scanf("%s", name);
 			deleteNode(head, name);
 		}else if(input == 4){
 			deleteAll(head);
+		}else if(input == 6){
+			printAll(head);
 		}
 	}
 

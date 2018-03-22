@@ -17,9 +17,10 @@ void insertNode(struct node* head, char* name, char* unit, int quantity){
 		head = head->next;
 	}	
 	head->next = (struct node*)malloc(sizeof(struct node));
-	head->next->name = name;
-	head->next->unit = unit;
+	head->next->name = strdup(name);	
+	head->next->unit = strdup(unit);
 	head->next->quantity = quantity;
+	head->next->next = NULL;
 }
 
 void deleteNode(struct node* head, char* name){
