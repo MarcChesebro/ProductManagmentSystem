@@ -23,7 +23,7 @@ void insertNode(struct node* head, char* name, char* unit, int quantity, int pri
 		head = head->next;
 	}
 
-	if(strcmp(head->name, name)){
+	if(strcmp(head->name, name) == 0){
 		printf("Already in List");
 		return;
 	}
@@ -62,7 +62,7 @@ void deleteAll(struct node* head){
 void search(struct node* head, char* name){
 
 	while(head != NULL){
-		if(strcmp(head->name, name)){
+		if(strcmp(head->name, name) == 0){
 			printf("Found");
 			return;
 		}
@@ -82,7 +82,7 @@ void printAll(struct node* head){
 
 void purchase(struct node* head, char* name){
 	while(head != NULL){
-		if(strcmp(head->name, name)){
+		if(strcmp(head->name, name) == 0){
 			head->quantity++;
 			return;
 		}
@@ -97,7 +97,7 @@ void sell(struct node* head, char* name){
 	struct node* original = head;
 
 	while(head != NULL){
-		if(strcmp(head->name, name)){
+		if(strcmp(head->name, name) == 0){
 			head->quantity--;
 			if(head->quantity < 1){
 				deleteNode(original, name);
